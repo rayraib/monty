@@ -60,3 +60,23 @@ void swap(stack_t **head, unsigned int line_num)
 	if((*head)->next->next != NULL)
 		(*head)->next->next->prev = (*head)->next;
 }
+/**
+* add - adds the top two elements of the stack
+* @head: Pointer to the top of teh element of the stack
+* @line_num: Line number of the command in monty bytecode file
+*/
+void add(stack_t **head, unsigned int line_num)
+{
+	int n = 0;
+	if (head == NULL || (*head) == NULL || (*head)->next == NULL)
+	{
+		printf("L%d: can't swap, stack too short\n", line_num);
+		free_stack();
+		exit(EXIT_FAILURE);
+	}
+	n = (*head)->n + (*head)->next->n;	
+	(*head) = (*head)->next;
+	free((*head)->prev);
+	(*head)->prev = NULL;
+	(*head)->n = n;
+}
