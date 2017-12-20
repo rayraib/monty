@@ -10,6 +10,8 @@ void push(stack_t **stack, unsigned int line_num)
 
 	(*stack)->next = head;
 	(*stack)->prev = NULL;
+	if ((*stack)->next != NULL)
+		(*stack)->next->prev = (*stack);
 	head = (*stack);
 }
 /**
