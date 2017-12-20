@@ -10,6 +10,8 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 
 	instruction_t no_arg_func[] = {
 			{"pall", pall},
+			{"pint", pint},
+			{"pop", pop},
 			{NULL, NULL}
 			};
 	for (i = 0; no_arg_func[i].opcode != NULL; i++)
@@ -49,6 +51,14 @@ void check_arg_func(unsigned int ln_num, char *tok_1, char *tok_2, char *buf, FI
 				stack = create_stack(n, buf, fp);
 				arg_func[i].f(&stack, ln_num);
 
+			}
+			else	
+			{
+				free(buf);
+				fclose(fp);
+				free_stack();
+				printf("L%d: usage: push integer\n", ln_num);
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
