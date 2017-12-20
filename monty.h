@@ -1,4 +1,4 @@
-#ifndef _MONTY_H_
+#ifndef _MONTY_H_ 
 #define _MONTY_H_
 #include <stdio.h>
 #include <stdlib.h>
@@ -35,10 +35,9 @@ typedef struct instruction_s
 stack_t *head;
 void open_file(char *monty_file);
 void read_and_tokenize(FILE *fp);
-void check_command(unsigned int line_num, char *token_1, char *token_2);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **head, unsigned int line_num);
-stack_t *create_stack(int n);
-int check_no_arg_func(unsigned int line_num, char *token_1);
-void check_arg_func(unsigned int line_num, char *token_1, char *token_2);
+stack_t *create_stack(int n, char *buf, FILE *fp);
+int check_no_arg_func(unsigned int line_num, char *token_1, char *buf, FILE *fp);
+void check_arg_func(unsigned int line_num, char *token_1, char *token_2, char *buf, FILE *fp);
 #endif
