@@ -6,12 +6,20 @@
 void open_file(char *monty_file)
 {
 	FILE *fp;
+	struct stat *st = NULL;
 	
+	st = malloc(sizeof(struct stat));
+	if (stat(monty_file, st) != 0)
+	{
+		printf("Error: Can't open file %s\n", monty_file);
+		free(st);
+		exit(EXIT_FAILURE);
+	}
+	free(st);
 	fp = fopen(monty_file, "r");/*open file to read*/
 	if (fp == NULL)
 	{
-		fclose(fp);
-		printf("Error: Can't open file\n");
+		printf("Error: Can't open %s\n", monty_file);
 		exit (EXIT_FAILURE);
 	}
 	read_and_tokenize(fp);/*call function to read to buffer and tokenize*/
