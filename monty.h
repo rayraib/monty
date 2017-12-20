@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -32,7 +35,7 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-stack_t *head;
+extern stack_t *head;
 void open_file(char *monty_file);
 void read_and_tokenize(FILE *fp);
 void push(stack_t **stack, unsigned int line_num);
@@ -43,4 +46,5 @@ void check_arg_func(unsigned int ln_num, char *tok_1, char *tok_2, char *buf, FI
 void free_stack(void);
 void pint(stack_t **head, unsigned int line_num);
 void pop(stack_t **head, unsigned int line_num);
+void swap(stack_t **head, unsigned int line_num);
 #endif
