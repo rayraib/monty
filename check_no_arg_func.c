@@ -13,8 +13,11 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 			};
 	for (i = 0; no_arg_func[i].opcode != NULL; i++)
 	{
-		if (strcmp(token_1, no_arg_func[i].opcode) != 0)
+		if (strcmp(token_1, no_arg_func[i].opcode) == 0)
+		{
 			no_arg_func[i].f(&head, line_num);
+			return (0);
+		}
 	}
 	return (-1);
 }
