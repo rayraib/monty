@@ -9,6 +9,11 @@ void open_file(char *monty_file)
 	struct stat *st = NULL;
 	
 	st = malloc(sizeof(struct stat));
+	if (st == NULL)
+	{
+		printf("Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	if (stat(monty_file, st) != 0)
 	{
 		printf("Error: Can't open file %s\n", monty_file);
