@@ -2,6 +2,7 @@
 /**
 * check_no_arg_func - Check if arg is valid and call corresponding funciton
 * @line_num: Number line of the arg in bytecode file
+* @token_1: argument to check
 * Return: O success, -1 if invalid command
 */
 int check_no_arg_func(unsigned int line_num, char *token_1)
@@ -12,11 +13,14 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 			{"pall", pall},
 			{"pint", pint},
 			{"pop", pop},
+			{"swap", swap},
+			{"add", add},
+			/*{"nop", nop},*/
 			{NULL, NULL}
 			};
 	for (i = 0; no_arg_func[i].opcode != NULL; i++)
 	{
-		if (strcmp(token_1, no_arg_func[i].opcode) == 0)
+		if (strcmp(token_1, no_arg_func[i].opcode) == 0)/*is valid arg*/
 		{
 			no_arg_func[i].f(&head, line_num);
 			return (0);
@@ -26,9 +30,11 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 }
 /**
 * check_arg_func - checks if an arg is valid and call corresponding function
-* @line_num: Number line of the arg in bytecode file
-* @token_1: first argument to check
-* @token_2: second argument to check
+* @ln_num: Number line of the arg in bytecode file
+* @tok_1: first argument to check
+* @tok_2: second argument to check
+* @buf: Pointer to string of commands from bytecode monty file
+* @fp: Pointer to open monty file
 */
 void check_arg_func(unsigned int ln_num, char *tok_1, char *tok_2, char *buf, FILE *fp)
 {
