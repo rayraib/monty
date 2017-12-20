@@ -38,6 +38,6 @@ void read_and_tokenize(FILE *fp);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **head, unsigned int line_num);
 stack_t *create_stack(int n, char *buf, FILE *fp);
-int check_no_arg_func(unsigned int line_num, char *token_1, char *buf, FILE *fp);
-void check_arg_func(unsigned int line_num, char *token_1, char *token_2, char *buf, FILE *fp);
+int check_no_arg_func(unsigned int line_num, char *token_1);
+void check_arg_func(unsigned int ln_num, char *tok_1, char *tok_2, char *buf, FILE *fp);
 #endif
