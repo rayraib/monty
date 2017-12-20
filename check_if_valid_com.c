@@ -16,8 +16,7 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 	{
 		if (strcmp(token_1, no_arg_func[i].opcode) == 0)
 		{
-			no_arg_func[i].f(&head, line_num);
-			return (0);
+
 		}
 	}
 	return (-1);
@@ -55,6 +54,7 @@ void check_arg_func(unsigned int ln_num, char *tok_1, char *tok_2, char *buf, FI
 		{
 			free(buf);
 			fclose(fp);
+			free_stack();
 			printf("L%d: unknown instruction %s\n", ln_num, tok_2);
 			exit(EXIT_FAILURE);
 		}

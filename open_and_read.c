@@ -43,6 +43,7 @@ void read_and_tokenize(FILE *fp)
 	}
 	free (buffer);
 	fclose(fp);
+	free_stack();
 }
 /**
 * create_stack - creates a new stack and populates n data
@@ -60,6 +61,7 @@ stack_t *create_stack(int n, char *buf, FILE *fp)
 	{
 		free (buf);	
 		fclose (fp);
+		free_stack();
 		printf("Error: malloc failed\n");
 		exit (EXIT_FAILURE);
 	}
