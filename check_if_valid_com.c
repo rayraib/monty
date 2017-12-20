@@ -39,12 +39,12 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 * @buf: Pointer to string of commands from bytecode monty file
 * @fp: Pointer to open monty file
 */
-void check_arg_func(unsigned int ln_num, 
+void check_arg_func(unsigned int ln_num,
 		char *tok_1, char *tok_2, char *buf, FILE *fp)
 {
 	int i, n;
 	stack_t *stack;
-	
+
 	instruction_t arg_func[] = {
 			{"push", push},
 			{NULL, NULL}
@@ -56,13 +56,13 @@ void check_arg_func(unsigned int ln_num,
 		{
 			if (tok_2 != NULL && isdigit(*tok_2) != 0)
 			{
-				
+
 				n = atoi(tok_2);
 				stack = create_stack(n, buf, fp);
 				arg_func[i].f(&stack, ln_num);
 
 			}
-			else	
+			else
 			{
 				free(buf);
 				fclose(fp);

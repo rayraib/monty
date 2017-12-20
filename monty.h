@@ -1,4 +1,4 @@
-#ifndef _MONTY_H_ 
+#ifndef _MONTY_H_
 #define _MONTY_H_
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 /**
  * struct instruction_s - opcoode and its function
@@ -32,8 +32,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 extern stack_t *head;
 void open_file(char *monty_file);
@@ -42,7 +42,8 @@ void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **head, unsigned int line_num);
 stack_t *create_stack(int n, char *buf, FILE *fp);
 int check_no_arg_func(unsigned int line_num, char *token_1);
-void check_arg_func(unsigned int ln_num, char *tok_1, char *tok_2, char *buf, FILE *fp);
+void check_arg_func(unsigned int ln_num,
+		 char *tok_1, char *tok_2, char *buf, FILE *fp);
 void free_stack(void);
 void pint(stack_t **head, unsigned int line_num);
 void pop(stack_t **head, unsigned int line_num);
