@@ -6,21 +6,13 @@
 void open_file(char *monty_file)
 {
 	FILE *fp;
-	struct stat *st = NULL;
-
-	st = malloc(sizeof(struct stat));
-	if (st == NULL)
+	/*check whether file is accessible */
+	if (access(monty_file, F_OK) != 0)
 	{
-		printf("Error: malloc failed\n");
+		printf("Error: Can't open %s\n", monty_file);
 		exit(EXIT_FAILURE);
 	}
-	if (stat(monty_file, st) != 0)
-	{
-		printf("Error: Can't open file %s\n", monty_file);
-		free(st);
-		exit(EXIT_FAILURE);
-	}
-	free(st);
+	/*open file to read */
 	fp = fopen(monty_file, "r");/*open file to read*/
 	if (fp == NULL)
 	{
