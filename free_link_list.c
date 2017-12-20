@@ -2,10 +2,8 @@
 /**
 * free_stack - frees each element of the stack
 */
-void free_stack()
+void free_stack(void)
 {
-	extern stack_t *head;
-
 	if (head != NULL)
 		while (head->next != NULL)
 		{

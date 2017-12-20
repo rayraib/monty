@@ -15,7 +15,10 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 			{"pop", pop},
 			{"swap", swap},
 			{"add", add},
-			/*{"nop", nop},*/
+			{"nop", nop},
+			{"sub", sub},
+		/*	{"div", div},*/
+			{"mul", mul},
 			{NULL, NULL}
 			};
 	for (i = 0; no_arg_func[i].opcode != NULL; i++)
@@ -36,7 +39,8 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 * @buf: Pointer to string of commands from bytecode monty file
 * @fp: Pointer to open monty file
 */
-void check_arg_func(unsigned int ln_num, char *tok_1, char *tok_2, char *buf, FILE *fp)
+void check_arg_func(unsigned int ln_num, 
+		char *tok_1, char *tok_2, char *buf, FILE *fp)
 {
 	int i, n;
 	stack_t *stack;

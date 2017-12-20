@@ -80,3 +80,13 @@ void add(stack_t **head, unsigned int line_num)
 	(*head)->prev = NULL;
 	(*head)->n = n;
 }
+/**
+* nop - does nothing
+* @head: Pointer to the top of teh element of the stack
+* @line_num: Line number of the command in monty bytecode file
+*/
+void nop(stack_t **head, unsigned int line_num)
+{
+	(void) head;
+	(void) line_num;
+}

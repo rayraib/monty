@@ -1,4 +1,4 @@
-#include "monty.h" 
+#include "monty.h"
 /**
 * open_file - opens a file to read
 * @monty_file: file to open
@@ -7,7 +7,7 @@ void open_file(char *monty_file)
 {
 	FILE *fp;
 	struct stat *st = NULL;
-	
+
 	st = malloc(sizeof(struct stat));
 	if (st == NULL)
 	{
@@ -25,7 +25,7 @@ void open_file(char *monty_file)
 	if (fp == NULL)
 	{
 		printf("Error: Can't open %s\n", monty_file);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	read_and_tokenize(fp);/*call function to read to buffer and tokenize*/
 }
@@ -49,12 +49,12 @@ void read_and_tokenize(FILE *fp)
 			continue;
 		token_2 = strtok(NULL, delim);/*tokenize second string*/
 		line_num++;
-		if(check_no_arg_func(line_num, token_1) == -1)
+		if (check_no_arg_func(line_num, token_1) == -1)
 		{
 			check_arg_func(line_num, token_1, token_2, buffer, fp);
 		}
 	}
-	free (buffer);
+	free(buffer);
 	fclose(fp);
 	free_stack();
 }
@@ -72,11 +72,11 @@ stack_t *create_stack(int n, char *buf, FILE *fp)
 	stack = malloc(sizeof(stack_t));
 	if (stack == NULL)
 	{
-		free (buf);	
-		fclose (fp);
+		free(buf);
+		fclose(fp);
 		free_stack();
 		printf("Error: malloc failed\n");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	stack->n = n;
 	return (stack);
