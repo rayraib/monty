@@ -14,3 +14,28 @@ void pint(stack_t **head, unsigned int line_num)
 	}
 	printf("%d\n",(*head)->n);
 }
+/**
+* pop - Remove top element from stack
+* @head: Pointer to the top of element of stack
+* @line_num: Line number of the command in monty bytecode file
+*/
+void pop(stack_t **head, unsigned int line_num)
+{
+	if (head == NULL || (*head) == NULL)
+	{
+		printf("L%d: can't pop and empty stack\n", line_num);
+		free_stack();
+		exit(EXIT_FAILURE);
+	}
+	if ((*head)->next == NULL)
+	{
+		free(*head);
+		(*head) = NULL;
+	}
+	else
+	{
+		(*head) = (*head)->next;
+		free((*head)->prev);
+		(*head)->prev = NULL;
+	}
+}
