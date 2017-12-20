@@ -42,4 +42,5 @@ int check_no_arg_func(unsigned int line_num, char *token_1);
 void check_arg_func(unsigned int ln_num, char *tok_1, char *tok_2, char *buf, FILE *fp);
 void free_stack(void);
 void pint(stack_t **head, unsigned int line_num);
+void pop(stack_t **head, unsigned int line_num);
 #endif
