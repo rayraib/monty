@@ -7,13 +7,13 @@ void open_file(char *monty_file)
 {
 	FILE *fp;
 	
-	fp = fopen(monty_file, "r");
+	fp = fopen(monty_file, "r");/*open file to read*/
 	if (fp == NULL)
 	{
 		printf("Open Error\n");
 		exit (EXIT_FAILURE);
 	}
-	read_and_tokenize(fp);
+	read_and_tokenize(fp);/*call function to read to buffer and tokenize*/
 }
 /**
 * read_and_tokenize - Reads line from a file and tokinizes the content
@@ -28,19 +28,20 @@ void read_and_tokenize(FILE *fp)
 
 	delim = " \t\n";
 	token_1 = token_2 = buffer = NULL;
-	while (getline(&buffer, &n, fp) != -1)
+	while (getline(&buffer, &n, fp) != -1)/*as long as there is next line */
 	{
-		token_1 = strtok(buffer, delim);
-		if (token_1 == NULL)
+		token_1 = strtok(buffer, delim);/*tokenize first string*/
+		if (token_1 == NULL)/*if failure to tokenize*/
 		{
 			fclose(fp);
 			free(buffer);
 			printf("Error tokenizing\n");
 			exit (EXIT_FAILURE);
 		}
-		token_2 = strtok(NULL, delim);
+		token_2 = strtok(NULL, delim);/*tokenize second string*/
 		line_num++;
-		check_command(line_num, token_1, token_2);
+		check_command(line_num, token_1, token_2);/*call 
+							command to check if strings are valid commands*/
 
 	}
 }
@@ -51,45 +52,12 @@ void read_and_tokenize(FILE *fp)
 */
 void check_command(unsigned int line_num, char *token_1, char *token_2)
 {
-	int n, i;
-	stack_t *stack = NULL;
-	extern stack_t *head;
-	instruction_t no_arg_func[] = {
-			{ "pall", pall},
-			{ NULL, NULL}
-			};
-	instruction_t arg_func[] = {
-			{ "push", push},
-			{NULL, NULL}
-			};
-	for (i = 0; no_arg_func[i].opcode != NULL; i++)
+	int check_ret;
+	
+	check_ret = check_no_arg_func(line_num, token_1);
+	if (check_ret == -1)
 	{
-		if (strcmp(token_1, no_arg_func[i].opcode) != 0)
-			no_arg_func[i].f(&head, line_num);
-	}
-	for (i = 0; arg_func[i].opcode != NULL; i++)
-	{
-		if (strcmp(token_1, no_arg_func[i].opcode) != 0)
-		{
-			if(token_2 != NULL && isdigit(*token_2) != 0)
-			{
-				n = atoi(token_2);
-				stack = create_stack(n);
-				arg_func[i].f(&stack, line_num);
-			}
-			else
-			{
-				printf("Error: Second arg not int\n");
-				exit(EXIT_FAILURE);
-			}
-		}
-		else
-		{
-
-			printf("Error: Second arg not int\n");
-			exit(EXIT_FAILURE);
-		}
-		
+		check_arg_func(line_num, token_1, token_2);
 	}
 }
 /**

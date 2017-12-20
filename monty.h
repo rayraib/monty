@@ -39,4 +39,6 @@ void check_command(unsigned int line_num, char *token_1, char *token_2);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **head, unsigned int line_num);
 stack_t *create_stack(int n);
+int check_no_arg_func(unsigned int line_num, char *token_1);
+void check_arg_func(unsigned int line_num, char *token_1, char *token_2);
 #endif

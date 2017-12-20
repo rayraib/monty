@@ -6,6 +6,7 @@
 void push(stack_t **stack, unsigned int line_num)
 {
 	extern stack_t *head;
+	(void) line_num;
 
 	(*stack)->next = head;
 	(*stack)->prev = NULL;
@@ -17,6 +18,7 @@ void push(stack_t **stack, unsigned int line_num)
 void pall(stack_t **head, unsigned int line_num)
 {
 	stack_t *tmp;
+	(void) line_num;
 
 	tmp = *head;
 	while (tmp != NULL)
