@@ -10,6 +10,7 @@ void open_file(char *monty_file)
 	fp = fopen(monty_file, "r");/*open file to read*/
 	if (fp == NULL)
 	{
+		fclose(fp);
 		printf("Error: Can't open file\n");
 		exit (EXIT_FAILURE);
 	}
@@ -35,13 +36,13 @@ void read_and_tokenize(FILE *fp)
 			continue;
 		token_2 = strtok(NULL, delim);/*tokenize second string*/
 		line_num++;
-		if(check_no_arg_func(line_num, token_1, buffer, fp) == -1)
+		if(check_no_arg_func(line_num, token_1) == -1)
 		{
 			check_arg_func(line_num, token_1, token_2, buffer, fp);
 		}
 	}
-	/*free (buffer); causes double free error
-	fclose(fp);*/
+	free (buffer);
+	fclose(fp);
 }
 /**
 * create_stack - creates a new stack and populates n data
