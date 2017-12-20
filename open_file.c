@@ -47,6 +47,8 @@ void read_and_tokenize(FILE *fp)
 /**
 * create_stack - creates a new stack and populates n data
 * @n: data for n element of the new stack struct
+* @buf: Pointer to the string of commands from monty bytecode file
+* @fp: pointer to the open monty bytecode file
 * Return: Pointer to the stack
 */
 stack_t *create_stack(int n, char *buf, FILE *fp)
