@@ -8,9 +8,6 @@ stack_t *head = NULL;
 */
 int main(int argc, char **argv)
 {
-	head = NULL;
-	(void) head;
-
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
