@@ -23,8 +23,10 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 			};
 	for (i = 0; no_arg_func[i].opcode != NULL; i++)
 	{
-		if (strcmp(token_1, no_arg_func[i].opcode) == 0)/*is valid arg*/
+		/*check if the command(token) is a valid command*/
+		if (strcmp(token_1, no_arg_func[i].opcode) == 0)
 		{
+			/*call corresponding function for that command*/
 			no_arg_func[i].f(&head, line_num);
 			return (0);
 		}
@@ -43,26 +45,28 @@ void check_arg_func(unsigned int ln_num,
 		char *tok_1, char *tok_2, char *buf, FILE *fp)
 {
 	int i, n;
-	stack_t *stack;
+	stack_t *stack = NULL;
 
 	instruction_t arg_func[] = {
 			{"push", push},
 			{NULL, NULL}
 			};
-	stack = NULL;
 	for (i = 0; arg_func[i].opcode != NULL; i++)
 	{
+		/*check if tok_1, is a valid command */
 		if (strcmp(tok_1, arg_func[i].opcode) == 0)
 		{
+			/*check if the tok_2 is a valid arg for the command*/
 			if (tok_2 != NULL && isdigit(*tok_2) != 0)
 			{
 
 				n = atoi(tok_2);
 				stack = create_stack(n, buf, fp);
+				/*send stack to be pushed */
 				arg_func[i].f(&stack, ln_num);
 
 			}
-			else
+			else/*invalid arg to command is given*/
 			{
 				free(buf);
 				fclose(fp);
@@ -71,7 +75,7 @@ void check_arg_func(unsigned int ln_num,
 				exit(EXIT_FAILURE);
 			}
 		}
-		else
+		else/*invalid command is given*/
 		{
 			free(buf);
 			fclose(fp);
