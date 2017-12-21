@@ -44,7 +44,7 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 void check_arg_func(unsigned int ln_num,
 		char *command, char *arg, char *buf, FILE *fp)
 {
-	int i, n, is_neg = 0;
+	int i;
 	stack_t *stack = NULL;
 
 	instruction_t arg_func[] = {
@@ -56,23 +56,9 @@ void check_arg_func(unsigned int ln_num,
 		/*check if command is a valid command */
 		if (strcmp(command, arg_func[i].opcode) == 0)
 		{
-			/* if arg is a negative num raise flag */
-			if (arg != NULL && arg[0] == '-')
-			{
-				is_neg = -1;
-				arg++;
-			}
-			/*check if the arg is a valid arg for the command*/
-			if (arg != NULL && isdigit(*arg) != 0)
-			{
-				n = atoi(arg);
-				if (is_neg == -1)
-					n *= (-1);
-				stack = create_stack(n, buf, fp);
-				/*send stack to be pushed */
+			stack = check_if_all_int(arg, buf, fp);
+			if (stack != NULL)
 				arg_func[i].f(&stack, ln_num);
-
-			}
 			else/*invalid arg to command is given*/
 				cmd_err_msg(command, ln_num, buf, fp);
 		}
@@ -102,4 +88,36 @@ void cmd_err_msg(char *cmd, unsigned int ln_num, char *buf, FILE *fp)
 	free(buf);
 	fclose(fp);
 	exit(EXIT_FAILURE);
+}
+/**
+* check_if_all_int - checks if all the chars of the arg are int
+* @arg: Argument to check for ints
+* @buf: Pointer to where the argument is was initially stored
+* @fp: Pointer to an open monty file with all commands and args
+* Return: Pointer to new node with the arg value, NULL if failure
+*/
+stack_t *check_if_all_int(char *arg, char *buf, FILE *fp)
+{
+	int n, i, is_neg = 0;
+	stack_t *stack;
+
+	if (arg != NULL && arg[0] == '-')
+	{
+		is_neg = -1;
+		arg++;
+	}
+	if (arg != NULL && isdigit(*arg) != 0)
+	{
+		for (i = 0; arg[i] != '\0'; i++)
+		{
+			if (isdigit(arg[i]) == 0)
+				return (NULL);
+		}
+		n = atoi(arg);
+		if (is_neg == -1)
+			n *= -1;
+		stack = create_stack(n, buf, fp);
+		return (stack);
+	}
+	return (NULL);
 }

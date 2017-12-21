@@ -54,4 +54,5 @@ void sub(stack_t **head, unsigned int line_num);
 /*void div(stack_t **head, unsigned int line_num);*/
 void mul(stack_t **head, unsigned int line_num);
 void cmd_err_msg(char *cmd, unsigned int ln_num, char *buf, FILE *fp);
+stack_t *check_if_all_int(char *arg, char *buf, FILE *fp);
 #endif
