@@ -53,5 +53,5 @@ void nop(stack_t **head, unsigned int line_num);
 void sub(stack_t **head, unsigned int line_num);
 /*void div(stack_t **head, unsigned int line_num);*/
 void mul(stack_t **head, unsigned int line_num);
-void cmd_err(char *cmd, char *arg, unsigned int ln_num, char *buf, FILE *fp);
+void cmd_err_msg(char *cmd, unsigned int ln_num, char *buf, FILE *fp);
 #endif
