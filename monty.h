@@ -56,4 +56,5 @@ void mul(stack_t **head, unsigned int line_num);
 void invalid_cmd_errmsg(char *cmd, unsigned int ln_num, char *buf, FILE *fp);
 stack_t *check_int_arg(char *arg, char *buf, FILE *fp);
 void div_stack(stack_t **head, unsigned int line_num);
+void pchar(stack_t **head, unsigned int line_num);
 #endif
