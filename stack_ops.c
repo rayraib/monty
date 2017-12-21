@@ -54,7 +54,7 @@ void swap(stack_t **head, unsigned int line_num)
 	}
 	(*head) = (*head)->next;
 	(*head)->prev->next = (*head)->next;
-	(*head)->prev->prev= (*head);
+	(*head)->prev->prev = (*head);
 	(*head)->next = (*head)->prev;
 	(*head)->prev = NULL;
 	if ((*head)->next->next != NULL)
