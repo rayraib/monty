@@ -36,8 +36,8 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 /**
 * check_arg_func - checks if an arg is valid and call corresponding function
 * @ln_num: Number line of the arg in bytecode file
-* @tok_1: first argument to check
-* @tok_2: second argument to check
+* @command: first argument to check
+* @arg: second argument to check
 * @buf: Pointer to string of commands from bytecode monty file
 * @fp: Pointer to open monty file
 */
@@ -75,11 +75,10 @@ void check_arg_func(unsigned int ln_num,
 }
 /**
 * cmd_err_msg - Frees buffer, close open file and print error msg
-* @command: Invalid command to print error for
-* @line_num: Number line of the command in bytecode monty file 
+* @cmd: Invalid command to print error for
+* @ln_num: Number line of the command in bytecode monty file
 * @buf: Pointer to the command string
 * @fp: FILE type pointer to the open monty file
-* @arg: Argument for the command
 */
 void cmd_err_msg(char *cmd, unsigned int ln_num, char *buf, FILE *fp)
 {
@@ -95,5 +94,5 @@ void cmd_err_msg(char *cmd, unsigned int ln_num, char *buf, FILE *fp)
 	free_stack();
 	free(buf);
 	fclose(fp);
-	exit(EXIT_FAILURE);	
+	exit(EXIT_FAILURE);
 }
