@@ -30,7 +30,7 @@ void read_and_tokenize(FILE *fp)
 	char *buffer, *delim;
 	char *token_1, *token_2;
 	size_t n;
-	unsigned int line_num = 0;
+	unsigned int line_num = 1;
 
 	delim = " \t\n";
 	token_1 = token_2 = buffer = NULL;
