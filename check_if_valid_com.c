@@ -80,7 +80,7 @@ void check_arg_func(unsigned int ln_num,
 			free(buf);
 			fclose(fp);
 			free_stack();
-			printf("L%d: unknown instruction %s\n", ln_num, tok_2);
+			printf("L%d: unknown instruction %s\n", ln_num, tok_1);
 			exit(EXIT_FAILURE);
 		}
 	}
