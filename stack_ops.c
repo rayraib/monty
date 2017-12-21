@@ -52,11 +52,11 @@ void swap(stack_t **head, unsigned int line_num)
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
-	(*head)->next = (*head)->next->next;
-	(*head) = (*head)->next->prev;
+	(*head) = (*head)->next;
+	(*head)->prev->next = (*head)->next;
+	(*head)->prev->prev= (*head);
 	(*head)->next = (*head)->prev;
 	(*head)->prev = NULL;
-	(*head)->next->prev = (*head);
 	if ((*head)->next->next != NULL)
 		(*head)->next->next->prev = (*head)->next;
 }
