@@ -67,10 +67,10 @@ void check_arg_func(unsigned int ln_num,
 
 			}
 			else/*invalid arg to command is given*/
-				cmd_err(command, arg, ln_num, buf, fp);
+				cmd_err_msg(command, ln_num, buf, fp);
 		}
 		else/*invalid command is given*/
-			cmd_err(command, arg, ln_num, buf, fp);
+			cmd_err_msg(command, ln_num, buf, fp);
 	}
 }
 /**
@@ -81,9 +81,9 @@ void check_arg_func(unsigned int ln_num,
 * @fp: FILE type pointer to the open monty file
 * @arg: Argument for the command
 */
-void cmd_err(char *cmd, char *arg, unsigned int ln_num, char *buf, FILE *fp)
+void cmd_err_msg(char *cmd, unsigned int ln_num, char *buf, FILE *fp)
 {
-	if (arg == NULL || isdigit(*arg) == 0)
+	if (strcmp(cmd, "push") == 0)
 	{
 		printf("L%d: usage: push integer\n", ln_num);
 		free(buf);
