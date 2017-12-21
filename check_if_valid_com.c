@@ -68,19 +68,19 @@ void check_arg_func(unsigned int ln_num,
 			}
 			else/*invalid arg to command is given*/
 			{
+				printf("L%d: usage: push integer\n", ln_num);
 				free(buf);
 				fclose(fp);
 				free_stack();
-				printf("L%d: usage: push integer\n", ln_num);
 				exit(EXIT_FAILURE);
 			}
 		}
 		else/*invalid command is given*/
 		{
-			free(buf);
-			fclose(fp);
 			free_stack();
 			printf("L%d: unknown instruction %s\n", ln_num, tok_1);
+			free(buf);
+			fclose(fp);
 			exit(EXIT_FAILURE);
 		}
 	}
