@@ -9,14 +9,14 @@ void open_file(char *monty_file)
 	/*check whether file is accessible */
 	if (access(monty_file, F_OK) != 0)
 	{
-		printf("Error: Can't open %s\n", monty_file);
+		printf("Error: Can't open file %s\n", monty_file);
 		exit(EXIT_FAILURE);
 	}
 	/*open file to read */
 	fp = fopen(monty_file, "r");/*open file to read*/
 	if (fp == NULL)
 	{
-		printf("Error: Can't open %s\n", monty_file);
+		printf("Error: Can't open file %s\n", monty_file);
 		exit(EXIT_FAILURE);
 	}
 	read_and_tokenize(fp);/*call function to read to buffer and tokenize*/
