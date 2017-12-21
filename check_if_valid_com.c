@@ -42,7 +42,7 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 * @fp: Pointer to open monty file
 */
 void check_arg_func(unsigned int ln_num,
-		char *tok_1, char *tok_2, char *buf, FILE *fp)
+		char *command, char *arg, char *buf, FILE *fp)
 {
 	int i, n;
 	stack_t *stack = NULL;
@@ -54,13 +54,13 @@ void check_arg_func(unsigned int ln_num,
 	for (i = 0; arg_func[i].opcode != NULL; i++)
 	{
 		/*check if tok_1, is a valid command */
-		if (strcmp(tok_1, arg_func[i].opcode) == 0)
+		if (strcmp(command, arg_func[i].opcode) == 0)
 		{
 			/*check if the tok_2 is a valid arg for the command*/
-			if (tok_2 != NULL && isdigit(*tok_2) != 0)
+			if (arg != NULL && isdigit(*arg) != 0)
 			{
 
-				n = atoi(tok_2);
+				n = atoi(arg);
 				stack = create_stack(n, buf, fp);
 				/*send stack to be pushed */
 				arg_func[i].f(&stack, ln_num);
@@ -78,7 +78,7 @@ void check_arg_func(unsigned int ln_num,
 		else/*invalid command is given*/
 		{
 			free_stack();
-			printf("L%d: unknown instruction %s\n", ln_num, tok_1);
+			printf("L%d: unknown instruction %s\n", ln_num, command);
 			free(buf);
 			fclose(fp);
 			exit(EXIT_FAILURE);
