@@ -35,7 +35,7 @@ void mul(stack_t **head, unsigned int line_num)
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
-	n = (*head)->next->n * (*head)->n;
+	n = (*head)->n * (*head)->next->n;
 	(*head) = (*head)->next;
 	(*head)->n = n;
 	free((*head)->prev);
