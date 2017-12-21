@@ -17,8 +17,10 @@ int check_cmd_no_arg(unsigned int line_num, char *token_1)
 			{"add", add},
 			{"nop", nop},
 			{"sub", sub},
-		/*	{"div", div},*/
+			{"div", div_stack},
 			{"mul", mul},
+			{"pchar", pchar},
+			{"mod", mod},
 			{NULL, NULL}
 			};
 	for (i = 0; no_arg_func[i].opcode != NULL; i++)
