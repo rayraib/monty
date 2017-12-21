@@ -67,21 +67,33 @@ void check_arg_func(unsigned int ln_num,
 
 			}
 			else/*invalid arg to command is given*/
-			{
-				printf("L%d: usage: push integer\n", ln_num);
-				free(buf);
-				fclose(fp);
-				free_stack();
-				exit(EXIT_FAILURE);
-			}
+				cmd_err(command, arg, ln_num, buf, fp);
 		}
 		else/*invalid command is given*/
-		{
-			free_stack();
-			printf("L%d: unknown instruction %s\n", ln_num, command);
-			free(buf);
-			fclose(fp);
-			exit(EXIT_FAILURE);
-		}
+			cmd_err(command, arg, ln_num, buf, fp);
 	}
+}
+/**
+* cmd_err_msg - Frees buffer, close open file and print error msg
+* @command: Invalid command to print error for
+* @line_num: Number line of the command in bytecode monty file 
+* @buf: Pointer to the command string
+* @fp: FILE type pointer to the open monty file
+* @arg: Argument for the command
+*/
+void cmd_err(char *cmd, char *arg, unsigned int ln_num, char *buf, FILE *fp)
+{
+	if (arg == NULL || isdigit(*arg) == 0)
+	{
+		printf("L%d: usage: push integer\n", ln_num);
+		free(buf);
+		fclose(fp);
+		free_stack();
+		exit(EXIT_FAILURE);
+	}
+	printf("L%d: unknown instruction %s\n", ln_num, cmd);
+	free_stack();
+	free(buf);
+	fclose(fp);
+	exit(EXIT_FAILURE);	
 }
