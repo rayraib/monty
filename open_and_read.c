@@ -40,9 +40,9 @@ void read_and_tokenize(FILE *fp)
 		if (token_1 == NULL)
 			continue;
 		token_2 = strtok(NULL, delim);/*tokenize argument for the command*/
-		if (check_no_arg_func(line_num, token_1) == -1)
+		if (check_cmd_no_arg(line_num, token_1) == -1)
 		{
-			check_arg_func(line_num, token_1, token_2, buffer, fp);
+			check_cmd_arg(line_num, token_1, token_2, buffer, fp);
 		}
 	}
 	free(buffer);

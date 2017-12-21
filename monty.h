@@ -41,8 +41,8 @@ void read_and_tokenize(FILE *fp);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **head, unsigned int line_num);
 stack_t *create_stack(int n, char *buf, FILE *fp);
-int check_no_arg_func(unsigned int line_num, char *token_1);
-void check_arg_func(unsigned int ln_num,
+int check_cmd_no_arg(unsigned int line_num, char *token_1);
+void check_cmd_arg(unsigned int ln_num,
 		 char *tok_1, char *tok_2, char *buf, FILE *fp);
 void free_stack(void);
 void pint(stack_t **head, unsigned int line_num);
@@ -53,6 +53,6 @@ void nop(stack_t **head, unsigned int line_num);
 void sub(stack_t **head, unsigned int line_num);
 /*void div(stack_t **head, unsigned int line_num);*/
 void mul(stack_t **head, unsigned int line_num);
-void cmd_err_msg(char *cmd, unsigned int ln_num, char *buf, FILE *fp);
-stack_t *check_if_all_int(char *arg, char *buf, FILE *fp);
+void invalid_cmd_errmsg(char *cmd, unsigned int ln_num, char *buf, FILE *fp);
+stack_t *check_int_arg(char *arg, char *buf, FILE *fp);
 #endif
