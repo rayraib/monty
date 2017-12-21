@@ -52,7 +52,7 @@ void add(stack_t **head, unsigned int line_num)
 
 	if (head == NULL || (*head) == NULL || (*head)->next == NULL)
 	{
-		printf("L%d: can't swap, stack too short\n", line_num);
+		printf("L%d: can't add, stack too short\n", line_num);
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
