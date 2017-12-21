@@ -23,7 +23,7 @@ void pop(stack_t **head, unsigned int line_num)
 {
 	if (head == NULL || (*head) == NULL)
 	{
-		printf("L%d: can't pop and empty stack\n", line_num);
+		printf("L%d: can't pop an empty stack\n", line_num);
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
