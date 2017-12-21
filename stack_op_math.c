@@ -37,9 +37,9 @@ void mul(stack_t **head, unsigned int line_num)
 	}
 	n = (*head)->next->n * (*head)->n;
 	(*head) = (*head)->next;
+	(*head)->n = n;
 	free((*head)->prev);
 	(*head)->prev = NULL;
-	(*head)->n = n;
 }
 /**
 * add - adds the top two elements of the stack
