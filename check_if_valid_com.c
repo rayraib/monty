@@ -44,7 +44,7 @@ int check_no_arg_func(unsigned int line_num, char *token_1)
 void check_arg_func(unsigned int ln_num,
 		char *command, char *arg, char *buf, FILE *fp)
 {
-	int i, n;
+	int i, n, is_neg = 0;
 	stack_t *stack = NULL;
 
 	instruction_t arg_func[] = {
@@ -53,14 +53,21 @@ void check_arg_func(unsigned int ln_num,
 			};
 	for (i = 0; arg_func[i].opcode != NULL; i++)
 	{
-		/*check if tok_1, is a valid command */
+		/*check if command is a valid command */
 		if (strcmp(command, arg_func[i].opcode) == 0)
 		{
-			/*check if the tok_2 is a valid arg for the command*/
+			/* if arg is a negative num raise flag */
+			if (arg != NULL && arg[0] == '-')
+			{
+				is_neg = -1;
+				arg++;
+			}
+			/*check if the arg is a valid arg for the command*/
 			if (arg != NULL && isdigit(*arg) != 0)
 			{
-
 				n = atoi(arg);
+				if (is_neg == -1)
+					n *= (-1);
 				stack = create_stack(n, buf, fp);
 				/*send stack to be pushed */
 				arg_func[i].f(&stack, ln_num);
