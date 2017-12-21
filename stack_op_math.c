@@ -77,9 +77,11 @@ void div_stack(stack_t **head, unsigned int line_num)
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
-	if (*head->n == 0)
+	if ((*head)->n == 0)
 	{
-		printf("L%d: division by zero\n");	
+		printf("L%d: division by zero\n", line_num);
+		free_stack();
+		exit(EXIT_FAILURE);
 	}
 	n = (*head)->next->n / (*head)->n;
 	(*head) = (*head)->next;
