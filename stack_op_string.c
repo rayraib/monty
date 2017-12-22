@@ -51,13 +51,20 @@ void pstr(stack_t **head, unsigned int line_num)
 		while (tmp != NULL && tmp->n != 0)
 		{
 			val = tmp->n;
-			if (val < 65 && val > 90)
+			if (val >= 65 && val <= 90)
 			{
-				if (val < 97 && val > 122)
-					break;
+				putchar(val);
+				tmp = tmp->next;
 			}
-			putchar(val);
-			tmp = tmp->next;
+			else if (val >= 97 && val <= 122)
+			{
+				putchar(val);
+				tmp = tmp->next;
+			}
+			else
+			{
+				break;
+			}
 		}
 		putchar('\n');
 	}
