@@ -30,3 +30,35 @@ void pchar(stack_t **head, unsigned int line_num)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+* pstr - Prints the string starting at the top of the stack.
+* @head: Pointer to a pointer that ponts to the stack
+* @line_num: Number line of the command pstr in the monty file
+*/
+void pstr(stack_t **head, unsigned int line_num)
+{
+	stack_t *tmp;
+	int val;
+	(void) line_num;
+
+	if (head == NULL || (*head) == NULL)
+	{
+		printf("\n");
+	}
+	else
+	{
+		tmp = *head;
+		while (tmp != NULL && tmp->n != 0)
+		{
+			val = tmp->n;
+			if (val < 65 && val > 90)
+			{
+				if (val < 97 && val > 122)
+					break;
+			}
+			putchar(val);
+			tmp = tmp->next;
+		}
+		putchar('\n');
+	}
+}
