@@ -58,4 +58,5 @@ stack_t *check_int_arg(char *arg, char *buf, FILE *fp);
 void div_stack(stack_t **head, unsigned int line_num);
 void pchar(stack_t **head, unsigned int line_num);
 void mod(stack_t **head, unsigned int line_num);
+void pstr(stack_t **head, unsigned int line_num);
 #endif
