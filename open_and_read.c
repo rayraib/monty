@@ -37,7 +37,7 @@ void read_and_tokenize(FILE *fp)
 	for (line_num = 1; getline(&buffer, &n, fp) != -1; line_num++)
 	{
 		token_1 = strtok(buffer, delim);/*tokenize first command*/
-		if (token_1 == NULL)
+		if (token_1 == NULL || token_1[0] == '#')
 			continue;
 		token_2 = strtok(NULL, delim);/*tokenize argument for the command*/
 		if (check_cmd_no_arg(line_num, token_1) == -1)
