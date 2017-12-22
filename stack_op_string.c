@@ -80,8 +80,8 @@ void rotl(stack_t **head, unsigned int line_num)
 	(void) line_num;
 
 	if (head != NULL && (*head) != NULL && (*head)->next != NULL)
-	tmp = *head;
 	{
+		tmp = *head;
 		while (tmp->next != NULL)
 		{
 			tmp = tmp->next;
