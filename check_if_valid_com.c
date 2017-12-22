@@ -21,6 +21,7 @@ int check_cmd_no_arg(unsigned int line_num, char *token_1)
 			{"mul", mul},
 			{"pchar", pchar},
 			{"mod", mod},
+			{"pstr", pstr},
 			{NULL, NULL}
 			};
 	for (i = 0; no_arg_func[i].opcode != NULL; i++)
