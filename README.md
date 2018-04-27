@@ -35,14 +35,14 @@ Tested on `Ubuntu 14.04 LTS` via Vagrant in VirtualBox.
 |**monty.h**| Header file for the repository.|
 
 ### How to install
-To install, clone the repository to a directory, compile, then run the executable with a Monty Bytecode file.
+To install, clone the repository to a directory.
 https://github.com/rayraib/monty/
 ### Compilation
-Compile the code with the following flags: gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+Compile the code with the following flags: 
+`gcc -Wall -Werror -Wextra -pedantic *.c -o monty`
 
 *Usage Example:*
 ```
-vagrant@vagrant-ubuntu-trusty-64:~/holbertonschool-low_level_programming/0x18-stacks_queues_
-lifo_fifo$ ./monty bytecodes/00.m
+vagrant@vagrant-ubuntu-trusty-64$ ./monty bytecodes/00.m
 ```
 
